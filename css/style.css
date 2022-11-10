@@ -11,6 +11,11 @@
     align-items: center;
 }
 
+.disabled{
+    pointer-events: none;
+    opacity: .5;
+}
+
 .grid_cell:hover{
     cursor: pointer;
 }

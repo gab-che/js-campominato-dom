@@ -13,12 +13,12 @@ gridGenerator.addEventListener("click", function(){
     createGrid(difficultyValue);
 })
 
-const reset = document.getElementById("reset");
-reset.addEventListener("click", function(){
-    const emptyCell = document.querySelectorAll(".grid_cell");
-    emptyCell.forEach(grid_cell =>{
-        grid_cell.classList.remove("bg-info", "bg-danger");
-    })
-    scoreEl.innerHTML = "";
-    score = 0;
-})
+// const reset = document.getElementById("reset");
+// reset.addEventListener("click", function(){
+//     const emptyCell = document.querySelectorAll(".grid_cell");
+//     emptyCell.forEach(grid_cell =>{
+//         grid_cell.classList.remove("bg-info", "bg-danger");
+//     })
+//     scoreEl.innerHTML = "";
+//     score = 0;
+// })

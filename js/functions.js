@@ -55,10 +55,13 @@ function onCellClick(){
 
     if (bombs.includes(numCell)){
         this.classList.add("bg-danger");
+        scoreEl.innerHTML = `${score} Partita finita :(`;
+        const allCells = document.querySelectorAll(".grid_cell");
+        allCells.forEach(grid_cell =>{
+            grid_cell.classList.add("disabled");
+        })
     } else{
         this.classList.toggle("bg-info");
         score +=1;
     }
-
-    scoreEl.innerHTML = score;
 }
