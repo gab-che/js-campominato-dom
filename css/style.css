@@ -1,0 +1,16 @@
+.grid_container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.grid_cell{
+    border: 1px solid black;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid_cell:hover{
+    cursor: pointer;
+}
