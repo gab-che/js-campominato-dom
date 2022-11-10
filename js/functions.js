@@ -10,12 +10,9 @@ function createGrid(totalCells){
         const newCell = document.createElement("div");
         newCell.classList.add("grid_cell");
         newCell.style.width = `calc(100% / ${Math.sqrt(totalCells)})`;
-        newCell.innerHTML = i + 1;
+        newCell.dataset.numCell = i + 1;
 
-        newCell.addEventListener("click", function(){
-            this.classList.toggle("bg-info");
-            console.log(this.textContent);
-        })
+        newCell.addEventListener("click", onCellClick);
 
         gridContainer.append(newCell);
     }
@@ -47,4 +44,18 @@ function generateBombs(totalCells){
     }
 
     return bombList;
+}
+
+/**
+ * Confronta array bombe con numeri celle;
+ * se utente clicca su bomba, cella diventa rossa, altrimenti blu
+ */
+function onCellClick(){
+    const numCell = +this.dataset.numCell;
+    
+    if (bombs.includes(numCell)){
+        this.classList.add("bg-danger");
+    } else{
+        this.classList.toggle("bg-info");
+    }
 }
