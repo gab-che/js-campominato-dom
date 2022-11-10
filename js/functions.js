@@ -52,10 +52,13 @@ function generateBombs(totalCells){
  */
 function onCellClick(){
     const numCell = +this.dataset.numCell;
-    
+
     if (bombs.includes(numCell)){
         this.classList.add("bg-danger");
     } else{
         this.classList.toggle("bg-info");
+        score +=1;
     }
+
+    scoreEl.innerHTML = score;
 }
