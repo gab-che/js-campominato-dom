@@ -1,6 +1,7 @@
 :root {
     --color_primary: #C6C6C6;
     --color_secondary: #808080;
+    --color_accent: #f0040c;
     --standard_border_width: 5px;
     --cell_border_color: white #808080 #808080 white;
 }
@@ -16,6 +17,34 @@ h1, p{
 
 p{
     font-size: .7rem;
+}
+
+.form-select {
+    width: 150px;
+    border-radius: 0;
+    border-width: 4px;
+    border-style: solid;
+    border-color: var(--cell_border_color);
+    background-color: var(--color_primary);
+}
+
+.form-select:focus{
+    border-color: var(--color_secondary);
+    outline: 0;
+    box-shadow: 0 0 0 .25rem var(--color_primary);
+}
+
+.btn_retro {
+    --bs-btn-color: #212529;
+    --bs-btn-bg: var(--color_primary);
+    --bs-btn-border-width: 4px;
+    --bs-btn-active-border-color: transparent;
+    --bs-btn-border-radius: 0;
+    --bs-btn-hover-border-color: var(--cell_border_color);
+    --bs-btn-box-shadow: 0;
+    --bs-btn-disabled-opacity: 0.65;
+    --bs-btn-focus-box-shadow: 0;
+    border-color: var(--cell_border_color);
 }
 
 .grid_container{
@@ -35,6 +64,13 @@ p{
 
 .click_win{
     border: 1px solid var(--color_secondary);
+}
+
+.click_lose{
+    border: 1px solid var(--color_accent);
+    background-color: var(--color_accent);
+    background-image: url(../img/bomb.png);
+    background-size: cover;
 }
 
 .disabled{

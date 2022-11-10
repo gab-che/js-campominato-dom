@@ -55,7 +55,7 @@ function onCellClick(){
     const numCell = +this.dataset.numCell;
 
     if (bombs.includes(numCell)){
-        this.classList.add("bg-danger");
+        this.classList.add("click_lose");
         scoreEl.innerHTML = `${score}  Game over :(`;
         const allCells = document.querySelectorAll(".grid_cell");
         allCells.forEach(grid_cell =>{
