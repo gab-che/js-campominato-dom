@@ -1,14 +1,40 @@
+:root {
+    --color_primary: #C6C6C6;
+    --color_secondary: #808080;
+    --standard_border_width: 5px;
+    --cell_border_color: white #808080 #808080 white;
+}
+
+body {
+    background-color: var(--color_primary);
+    min-height: 100vh;
+}
+
+h1, p{
+    font-family: 'Press Start 2P', cursive;
+}
+
+p{
+    font-size: .7rem;
+}
+
 .grid_container{
     display: flex;
     flex-wrap: wrap;
+    border-width: 6px;
+    border-style: solid;
+    border-color: var(--color_secondary) white white var(--color_secondary);
 }
 
 .grid_cell{
-    border: 1px solid black;
+    border-width: var(--standard_border_width);
+    border-color: var(--cell_border_color);
+    border-style: solid;
     aspect-ratio: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+}
+
+.click_win{
+    border: 1px solid var(--color_secondary);
 }
 
 .disabled{

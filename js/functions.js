@@ -5,6 +5,7 @@
 function createGrid(totalCells){
     const gridContainer = document.querySelector(".grid_container");
     gridContainer.innerHTML = "";
+    gridContainer.classList.remove("d-none");
     
     for (i = 0; i < totalCells; i++){
         const newCell = document.createElement("div");
@@ -55,13 +56,13 @@ function onCellClick(){
 
     if (bombs.includes(numCell)){
         this.classList.add("bg-danger");
-        scoreEl.innerHTML = `${score} Partita finita :(`;
+        scoreEl.innerHTML = `${score}  Game over :(`;
         const allCells = document.querySelectorAll(".grid_cell");
         allCells.forEach(grid_cell =>{
             grid_cell.classList.add("disabled");
         })
     } else{
-        this.classList.toggle("bg-info");
+        this.classList.toggle("click_win");
         score +=1;
     }
 }
