@@ -1,6 +1,6 @@
 /**
- * Genera una griglia di 100, 81 o 49 caselle in un quadrato perfetto 
- * @param {number} totalCells 100, 81 o 49
+ * Genera una griglia in un quadrato perfetto 
+ * @param {number} totalCells numero selezionato dall'utente
  */
 function createGrid(totalCells){
     const gridContainer = document.querySelector(".grid_container");
@@ -53,13 +53,19 @@ function generateBombs(totalCells){
  */
 function onCellClick(){
     const numCell = +this.dataset.numCell;
-
+    
     if (bombs.includes(numCell)){
-        this.classList.add("click_lose");
+        
+        for(i = 0; i < bombs.length; i++){
+            const allBombs = document.querySelector(`.grid_container :nth-child(${bombs[i]})`);
+            allBombs.classList.add("click_lose");
+        }
+
         scoreEl.innerHTML = `${score}  Game over :(`;
         const allCells = document.querySelectorAll(".grid_cell");
         allCells.forEach(grid_cell =>{
             grid_cell.classList.add("disabled");
+
         })
     } else{
         this.classList.toggle("click_win");
