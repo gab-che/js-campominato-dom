@@ -11,12 +11,28 @@ body {
     min-height: 100vh;
 }
 
-h1, p{
+h1,
+p,
+span {
     font-family: 'Press Start 2P', cursive;
 }
 
-p{
+p,
+span {
     font-size: .7rem;
+}
+
+.game_display,
+.grid_container {
+    border-width: 6px;
+    border-style: solid;
+    border-color: var(--color_secondary) white white var(--color_secondary);
+    display: flex;
+}
+
+.game_display {
+    padding: 1.5rem 0.7rem;
+    height: 50px;
 }
 
 .form-select {
@@ -28,7 +44,7 @@ p{
     background-color: var(--color_primary);
 }
 
-.form-select:focus{
+.form-select:focus {
     border-color: var(--color_secondary);
     outline: 0;
     box-shadow: 0 0 0 .25rem transparent;
@@ -47,37 +63,49 @@ p{
     border-color: var(--cell_border_color);
 }
 
-.grid_container{
-    display: flex;
-    flex-wrap: wrap;
-    border-width: 6px;
-    border-style: solid;
-    border-color: var(--color_secondary) white white var(--color_secondary);
+.game_display button {
+    aspect-ratio: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
-.grid_cell{
+.btn_happy {
+    background-image: url("../img/smiley.png");
+}
+
+.btn_sad {
+    background-image: url("../img/shocked.png");
+}
+
+
+
+.grid_cell {
     border-width: var(--standard_border_width);
     border-color: var(--cell_border_color);
     border-style: solid;
     aspect-ratio: 1;
 }
 
-.click_win{
+.click_win {
     border: 1px solid var(--color_secondary);
 }
 
-.click_lose{
+.click_lose {
     border: 1px solid var(--color_accent);
     background-color: var(--color_accent);
     background-image: url(../img/bomb.png);
     background-size: cover;
 }
 
-.disabled{
+.disabled {
     pointer-events: none;
     opacity: .7;
 }
 
-.grid_cell:hover{
+.grid_cell:hover {
     cursor: pointer;
 }
+
+/* 
+.timer{
+} */

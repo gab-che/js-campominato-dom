@@ -16,7 +16,7 @@
     <main>
         <div class="container py-4">
             <div class="row">
-                <div class="col-6 m-auto">
+                <div class="col-lg-5 m-auto">
                     <h1 class="pb-3 text-center">MineSweeper</h1>
                     <div class="row justify-content-center">
                         <div class="col-8">
@@ -28,12 +28,18 @@
                                 </select>
                                 <button id="grid_generator" type="submit" class="btn btn_retro">Genera nuova griglia</button>
                             </div>
-                            <p>Punteggio: <span id="score"></span></p>
+                            <div class="game_display my-3 justify-content-between align-items-center">
+                                <p class="m-0">Punteggio: <span id="score"></span></p>
+                                <!-- <div>
+                                    <span id="timer">00:00</span>
+                                </div> -->
+                                <button class="btn btn_retro btn_happy"></button>
+                            </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-8">
-                            <div class="grid_container d-none"></div>
+                            <div class="grid_container d-none flex-wrap"></div>
                         </div>
                     </div>
                 </div>

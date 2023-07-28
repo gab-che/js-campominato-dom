@@ -52,23 +52,40 @@ function generateBombs(totalCells){
  * se utente clicca su bomba, cella diventa rossa, altrimenti blu
  */
 function onCellClick(){
+
+    // timer();
     const numCell = +this.dataset.numCell;
     
     if (bombs.includes(numCell)){
-        
+
         for(i = 0; i < bombs.length; i++){
             const allBombs = document.querySelector(`.grid_container :nth-child(${bombs[i]})`);
             allBombs.classList.add("click_lose");
         }
 
-        scoreEl.innerHTML = `${score}  Game over :(`;
+        scoreEl.innerHTML = `${score}  <br> Game over`;
         const allCells = document.querySelectorAll(".grid_cell");
         allCells.forEach(grid_cell =>{
             grid_cell.classList.add("disabled");
+        });
 
-        })
+        const smileyButton = document.querySelector(".btn_happy");
+        smileyButton.classList.remove("btn_happy");
+        smileyButton.classList.add("btn_sad");
+
     } else{
         this.classList.toggle("click_win");
         score +=1;
     }
 }
+
+// /**
+//  * Timer
+//  */
+// function timer(){
+//     let sec = 00;
+//     const timer = setInterval(function(){
+//         document.getElementById("timer").innerHTML=`00:${sec}`;
+//         sec++;
+//     }, 1000);
+// }
