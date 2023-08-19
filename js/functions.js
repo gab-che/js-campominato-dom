@@ -2,15 +2,15 @@
  * Genera una griglia in un quadrato perfetto 
  * @param {number} totalCells numero selezionato dall'utente
  */
-function createGrid(totalCells){
+function createGrid(totalCells) {
     const gridContainer = document.querySelector(".grid_container");
     gridContainer.innerHTML = "";
     gridContainer.classList.remove("d-none");
-    
-    for (i = 0; i < totalCells; i++){
+
+    for (i = 0; i < totalCells; i++) {
         const newCell = document.createElement("div");
         newCell.classList.add("grid_cell");
-        newCell.style.width = `calc(100% / ${Math.sqrt(totalCells)})`;
+        newCell.style.width = `calc(100% / ${cellsPerRow})`;
         newCell.dataset.numCell = i + 1;
 
         newCell.addEventListener("click", onCellClick);
@@ -24,7 +24,7 @@ function createGrid(totalCells){
  * @param {number} min
  * @param {number} max
  */
-function randomNumber(min, max){
+function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
@@ -33,13 +33,13 @@ function randomNumber(min, max){
  * @param {number} totalCells
  * @return {Array} bombList
  */
-function generateBombs(totalCells){
+function generateBombs(totalCells) {
     const bombList = []
 
-    while (bombList.length < 16){
+    while (bombList.length < 16) {
         const num = randomNumber(1, totalCells);
 
-        if (!bombList.includes(num)){
+        if (!bombList.includes(num)) {
             bombList.push(num);
         }
     }
@@ -51,32 +51,50 @@ function generateBombs(totalCells){
  * Confronta array bombe con numeri celle;
  * se utente clicca su bomba, cella diventa rossa, altrimenti blu
  */
-function onCellClick(){
-
+function onCellClick() {
     // timer();
     const numCell = +this.dataset.numCell;
-    
-    if (bombs.includes(numCell)){
+    if (bombs.includes(numCell)) {
 
-        for(i = 0; i < bombs.length; i++){
+        for (i = 0; i < bombs.length; i++) {
             const allBombs = document.querySelector(`.grid_container :nth-child(${bombs[i]})`);
             allBombs.classList.add("click_lose");
         }
 
         scoreEl.innerHTML = `${score}  <br> Game over`;
         const allCells = document.querySelectorAll(".grid_cell");
-        allCells.forEach(grid_cell =>{
+        allCells.forEach(grid_cell => {
             grid_cell.classList.add("disabled");
         });
 
         const smileyButton = document.querySelector(".btn_happy");
         smileyButton.classList.remove("btn_happy");
         smileyButton.classList.add("btn_sad");
-
-    } else{
-        this.classList.toggle("click_win");
-        score +=1;
     }
+
+    else {
+        this.classList.toggle("click_win");
+        score += 1;
+    }
+}
+
+/**
+ * Restituisce oggetto con numeri colonna sx e dx
+ * @param {number} totalCells numero totale celle
+ * @return {Object} sideColumns
+ */
+function sideColumnsNumbers(totalCells) {
+    const leftCol = [];
+    const rightCol = [];
+    for (i = 1; i < totalCells; i++) {
+        if (i % cellsPerRow === 1) {
+            leftCol.push(i);
+        } else if (i % cellsPerRow === 0) {
+            rightCol.push(i);
+        }
+    }
+
+    return { leftCol, rightCol }
 }
 
 // /**
