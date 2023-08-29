@@ -75,6 +75,71 @@ function onCellClick() {
     else {
         this.classList.toggle("click_win");
         score += 1;
+        checkNearbyBombs(numCell);
+    }
+}
+
+/**
+ * Controlla se ci sono bombe negli offset vicini alla casella cliccata
+ * @param {number} numCell numero cella cliccata
+ */
+function checkNearbyBombs(numCell){
+    let nearBombs = 0;
+
+    const offsets = {
+        'topleft': Math.abs(-1 -cellsPerRow),
+        'top': Math.abs(-cellsPerRow),
+        'topright': Math.abs(1 -cellsPerRow),
+        'left': Math.abs(-1),
+        'right': 1,
+        'bottomleft': Math.abs(-1 + cellsPerRow),
+        'bottom': + cellsPerRow,
+        'bottomright': 1 + cellsPerRow
+    };
+
+    
+    for(const offset in offsets){
+        switch(offset){
+            case 'topleft':
+                if(numCell - cellsPerRow > 0 && !leftCol.includes(numCell)){
+                    if(bombs.includes(numCell - offsets['topleft'])){
+                        nearBombs +=1;
+                    }
+                }
+                break;
+            case 'top':
+                if(numCell - cellsPerRow > 0){
+                    if(bombs.includes(numCell - offsets['top'])){
+                        nearBombs +=1;
+                    }
+                }
+                break;
+            case 'topright':
+                if(numCell - cellsPerRow > 0 && !rightCol.includes(numCell)){
+                    if(bombs.includes(numCell - offsets['topright'])){
+                        nearBombs +=1;
+                    }
+                }
+                break;
+            case 'left':
+                if(!leftCol.includes(numCell)){
+                    if(bombs.includes(numCell - offsets['left'])){
+                        nearBombs +=1;
+                    }
+                }
+                break;
+            case 'right':
+                if(!rightCol.includes(numCell)){
+                    if(bombs.includes(numCell + offsets['right'])){
+                        nearBombs +=1;
+                    }
+                }
+                break;
+            
+        }
+    }
+    if(nearBombs > 0){
+        this.innerHTML = nearBombs;
     }
 }
 
