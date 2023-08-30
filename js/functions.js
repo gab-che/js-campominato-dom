@@ -75,7 +75,7 @@ function onCellClick() {
     else {
         this.classList.toggle("click_win");
         score += 1;
-        checkNearbyBombs(numCell);
+        checkNearbyBombs(numCell, this);
     }
 }
 
@@ -83,7 +83,7 @@ function onCellClick() {
  * Controlla se ci sono bombe negli offset vicini alla casella cliccata
  * @param {number} numCell numero cella cliccata
  */
-function checkNearbyBombs(numCell){
+function checkNearbyBombs(numCell, clickedCell){
     let nearBombs = 0;
 
     const offsets = {
@@ -135,11 +135,34 @@ function checkNearbyBombs(numCell){
                     }
                 }
                 break;
-            
+            case 'bottomleft':
+                if(!leftCol.includes(numCell) && numCell + cellsPerRow <= Math.pow(cellsPerRow, 2)){
+                    if(bombs.includes(numCell + offsets['bottomleft'])){
+                        nearBombs +=1;
+                    };
+                }
+                break;
+            case 'bottom':
+                if(numCell + cellsPerRow <= Math.pow(cellsPerRow, 2)){
+                    if(bombs.includes(numCell + offsets['bottom'])){
+                        nearBombs +=1;
+                    }
+                }
+                break;
+            case 'bottomright':
+                if(!rightCol.includes(numCell) && numCell + cellsPerRow <= Math.pow(cellsPerRow, 2)){
+                    if(bombs.includes(numCell + offsets['bottomright'])){
+                        nearBombs +=1;
+                    }
+                }
+                break;
         }
     }
     if(nearBombs > 0){
-        this.innerHTML = nearBombs;
+        clickedCell.innerText = nearBombs;
+        if(nearBombs == 1){
+            clickedCell.classList.add('');
+        }
     }
 }
 
