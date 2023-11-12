@@ -21,7 +21,6 @@ gridGenerator.addEventListener("click", function () {
     leftCol = sideColumns.leftCol;
     rightCol = sideColumns.rightCol;
 
-    console.log(bombs);
     const smileyButton = document.querySelector(".game_display button");
     if (smileyButton.classList.contains("btn_sad")) {
         smileyButton.classList.remove("btn_sad");

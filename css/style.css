@@ -77,13 +77,35 @@ span {
     background-image: url("../img/shocked.png");
 }
 
-
-
 .grid_cell {
+    display: flex;
+    justify-content: center;
+    align-items: end;
     border-width: var(--standard_border_width);
     border-color: var(--cell_border_color);
     border-style: solid;
     aspect-ratio: 1;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.one{
+    color: #0000ff;
+}
+
+.two{
+    color: #008000;
+}
+
+.three{
+    color: #ff0000;
+}
+
+.four{
+    color: #030456;
+}
+
+.five{
+    color: #671b29;
 }
 
 .click_win {

@@ -74,6 +74,7 @@ function onCellClick() {
 
     else {
         this.classList.toggle("click_win");
+        this.classList.add("disabled");
         score += 1;
         checkNearbyBombs(numCell, this);
     }
@@ -82,6 +83,7 @@ function onCellClick() {
 /**
  * Controlla se ci sono bombe negli offset vicini alla casella cliccata
  * @param {number} numCell numero cella cliccata
+ * @param {HTMLElement} clickedCell div cliccato (this)
  */
 function checkNearbyBombs(numCell, clickedCell){
     let nearBombs = 0;
@@ -97,7 +99,6 @@ function checkNearbyBombs(numCell, clickedCell){
         'bottomright': 1 + cellsPerRow
     };
 
-    
     for(const offset in offsets){
         switch(offset){
             case 'topleft':
@@ -161,7 +162,15 @@ function checkNearbyBombs(numCell, clickedCell){
     if(nearBombs > 0){
         clickedCell.innerText = nearBombs;
         if(nearBombs == 1){
-            clickedCell.classList.add('');
+            clickedCell.classList.add('one');
+        } else if(nearBombs == 2){
+            clickedCell.classList.add('two');
+        } else if(nearBombs == 3){
+            clickedCell.classList.add('three');
+        } else if(nearBombs == 4){
+            clickedCell.classList.add('four');
+        } else {
+            clickedCell.classList.add('five');
         }
     }
 }
